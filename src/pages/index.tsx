@@ -37,19 +37,11 @@ export default function Home(): JSX.Element {
   }, [data]);
 
   if (isLoading) {
-    return (
-      <>
-        <Loading />
-      </>
-    );
+    return <Loading />;
   }
 
   if (isError) {
-    return (
-      <>
-        <Error />
-      </>
-    );
+    return <Error />;
   }
 
   return (
@@ -59,7 +51,7 @@ export default function Home(): JSX.Element {
       <Box maxW={1120} px={20} mx="auto" my={20}>
         <CardList cards={formattedData} />
         {hasNextPage && (
-          <Button onClick={fetchNextPage}>
+          <Button onClick={() => fetchNextPage()}>
             {isFetchingNextPage ? 'Carregando...' : 'Carregar mais'}
           </Button>
         )}
